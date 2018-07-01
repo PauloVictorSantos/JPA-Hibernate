@@ -9,6 +9,7 @@
 		<class>br.jus.hibernate.model.Produto</class>
 		<class>br.jus.hibernate.model.Proprietario</class>
 		<class>br.jus.hibernate.model.Telefone</class>
+		<class>br.jus.hibernate.model.Usuario</class>
 		<class>br.jus.hibernate.model.Veiculo</class>
 		<class>br.jus.hibernate.model.VeiculoId</class>
 	</persistence-unit>
