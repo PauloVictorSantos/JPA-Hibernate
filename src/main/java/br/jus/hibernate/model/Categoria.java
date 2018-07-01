@@ -5,6 +5,7 @@ import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
@@ -37,7 +38,7 @@ public class Categoria {
 		this.nome = nome;
 	}
 	
-	@OneToMany(mappedBy="categoria")
+	@OneToMany(mappedBy="categoria", fetch= FetchType.EAGER)
 	public List<Produto> getProdutos() {
 		return produtos;
 	}
