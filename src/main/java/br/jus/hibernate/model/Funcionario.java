@@ -5,10 +5,10 @@ import java.math.BigDecimal;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.PrimaryKeyJoinColumn;
+import javax.persistence.Table;
 
 @Entity
-//@DiscriminatorValue("F")
-@PrimaryKeyJoinColumn(name="pessoa_id")
+@Table(name="funcionario")
 public class Funcionario extends Pessoa {
 	private BigDecimal salario;
 	private String cargo;

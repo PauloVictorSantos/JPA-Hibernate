@@ -5,10 +5,10 @@ import java.math.BigDecimal;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.PrimaryKeyJoinColumn;
+import javax.persistence.Table;
 
 @Entity
-//@DiscriminatorValue("C")
-@PrimaryKeyJoinColumn(name="pessoa_id")
+@Table(name="cliente")
 public class Cliente extends Pessoa {
 	private BigDecimal limiteCredito;
 	private BigDecimal rendaMensal;
