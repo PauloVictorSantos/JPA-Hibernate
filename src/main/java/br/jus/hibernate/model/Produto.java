@@ -1,5 +1,6 @@
 package br.jus.hibernate.model;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -34,7 +35,7 @@ public class Produto {
 		this.nome = nome;
 	}
 	
-	@ManyToOne(optional=false, fetch = FetchType.LAZY)
+	@ManyToOne(optional=false, fetch = FetchType.LAZY, cascade= CascadeType.PERSIST)
 	public Categoria getCategoria() {
 		return categoria;
 	}

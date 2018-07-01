@@ -1,8 +1,9 @@
-package br.jus.hibernate.model;
+package br.jus.util;
 
 import javax.persistence.EntityManager;
 
-import br.jus.util.JpaUtil;
+import br.jus.hibernate.model.Categoria;
+import br.jus.hibernate.model.Produto;
 
 public class CatProdutList {
 

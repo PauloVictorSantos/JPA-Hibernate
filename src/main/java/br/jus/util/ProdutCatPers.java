@@ -27,7 +27,6 @@ public class ProdutCatPers {
 		produto3.setNome("Cerveja");
 		produto3.setCategoria(categoria);
 
-		manager.persist(categoria);
 		manager.persist(produto1);
 		manager.persist(produto2);
 		manager.persist(produto3);
