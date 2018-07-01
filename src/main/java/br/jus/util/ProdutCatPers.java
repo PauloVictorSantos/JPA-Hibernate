@@ -12,26 +12,13 @@ public class ProdutCatPers {
 		EntityManager manager = JpaUtil.getEntityManager();
 		EntityTransaction tx = manager.getTransaction();
 		tx.begin();
+		Categoria categoria = manager.find(Categoria.class, 10L);
+		Produto produto = manager.find(Produto.class, 9L);
+		categoria.getProdutos().remove(produto);
 
-		// categoria.setNome("Bebidas");
-		//
-		// Produto produto1 = new Produto();
-		// produto1.setNome("Refrigerante");
-		// produto1.setCategoria(categoria);
-		//
-		// categoria.getProdutos().add(produto1);
-		// manager.persist(produto1);
-
-		try {
-			Categoria categoria = manager.find(Categoria.class, 5L);
-			manager.remove(categoria);
-			tx.commit();
-		} catch (Exception e) {
-			e.printStackTrace();
-		} finally {
-			manager.close();
-			JpaUtil.close();
-		}
+		tx.commit();
+		manager.close();
+		JpaUtil.close();
 
 	}
 
