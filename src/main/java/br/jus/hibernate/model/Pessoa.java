@@ -9,16 +9,20 @@ import javax.persistence.Inheritance;
 import javax.persistence.InheritanceType;
 import javax.persistence.Table;
 
+import org.hibernate.annotations.GenericGenerator;
+
 @Entity
 @Table(name="pessoa")
-@Inheritance(strategy = InheritanceType.JOINED)
+@Inheritance(strategy = InheritanceType.TABLE_PER_CLASS)
 //@Inheritance(strategy=InheritanceType.SINGLE_TABLE)
 //@DiscriminatorColumn(name="tipo")
-public class Pessoa {
+public abstract class Pessoa {
 	private Long id;
 	private String nome;
+	
 	@Id
 	@GeneratedValue
+	@GenericGenerator(name="inc", strategy="increment")
 	public Long getId() {
 		return id;
 	}
