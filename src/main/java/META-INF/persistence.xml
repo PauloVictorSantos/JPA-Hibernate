@@ -11,6 +11,8 @@
 		<class>br.jus.hibernate.model.Pessoa</class>
 		<class>br.jus.hibernate.model.Cliente</class>
 		<class>br.jus.hibernate.model.Funcionario</class>
+		<class>br.jus.hibernate.model.Categoria</class>
+		<class>br.jus.hibernate.model.Produto</class>
 		<exclude-unlisted-classes>true</exclude-unlisted-classes>
 		<properties>
 			<property name="javax.persistence.jdbc.url"
