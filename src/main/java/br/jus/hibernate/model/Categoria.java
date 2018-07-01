@@ -3,6 +3,7 @@ package br.jus.hibernate.model;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -28,7 +29,7 @@ public class Categoria {
 	public void setId(Long id) {
 		this.id = id;
 	}
-	
+
 	@Column(length = 60, nullable = false)
 	public String getNome() {
 		return nome;
@@ -37,8 +38,8 @@ public class Categoria {
 	public void setNome(String nome) {
 		this.nome = nome;
 	}
-	
-	@OneToMany(mappedBy="categoria", fetch= FetchType.EAGER)
+
+	@OneToMany(mappedBy = "categoria", fetch = FetchType.EAGER, cascade = { CascadeType.PERSIST, CascadeType.REMOVE })
 	public List<Produto> getProdutos() {
 		return produtos;
 	}
