@@ -10,6 +10,9 @@ import br.jus.hibernate.model.Animal;
 
 public class AnimalPers {
 
+	/**
+	 * @param args
+	 */
 	public static void main(String[] args) {
 		EntityManager manager = JpaUtil.getEntityManager();
 		EntityTransaction tx = manager.getTransaction();
@@ -20,14 +23,12 @@ public class AnimalPers {
 		Animal animal = new Animal();
 		animal.setNome("Mimosa");
 		animal.setDataNascimento(dataNascimento.getTime());
-		animal.setDataUltimaAtualizacao(new Date());
-		
 		System.out.println("Idade antes de persistir: " + animal.getIdade());
 		manager.persist(animal);
-		
 		System.out.println("Idade depois de persistir: " + animal.getIdade());
-		
+
 		tx.commit();
+		
 		manager.close();
 		JpaUtil.close();
 	}

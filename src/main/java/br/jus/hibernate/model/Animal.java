@@ -5,17 +5,19 @@ import java.util.Date;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.EntityListeners;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.PostLoad;
-import javax.persistence.PostPersist;
 import javax.persistence.PostUpdate;
+import javax.persistence.PrePersist;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
 @Entity
-@Table
+@Table(name="animal")
+@EntityListeners(AuditorAnimal.class)
 public class Animal {
 	private Long id;
 	private String nome;
@@ -72,7 +74,7 @@ public class Animal {
 	}
 	
 	@PostLoad
-	@PostPersist
+	@PrePersist
 	@PostUpdate
 	public void calcularIdade(){
 		
