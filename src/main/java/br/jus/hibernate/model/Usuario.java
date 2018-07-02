@@ -5,7 +5,6 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.Table;
-import javax.persistence.Version;
 
 @Entity
 @Table(name = "usuario")
@@ -13,16 +12,6 @@ public class Usuario {
 	private Long id;
 	private String email;
 	private boolean ativo;
-	private Long versao;
-	
-	@Version
-	public Long getVersao() {
-		return versao;
-	}
-
-	public void setVersao(Long versao) {
-		this.versao = versao;
-	}
 
 	@Id
 	@GeneratedValue
