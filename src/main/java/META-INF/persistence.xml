@@ -14,8 +14,12 @@
 		<class>br.jus.hibernate.model.Categoria</class>
 		<class>br.jus.hibernate.model.Produto</class>
 		<class>br.jus.hibernate.model.Usuario</class>
-			<class>br.jus.hibernate.model.Animal</class>
-		<exclude-unlisted-classes>true</exclude-unlisted-classes>
+		<class>br.jus.hibernate.model.Animal</class>
+		<class>br.jus.hibernate.model.CentroCusto</class>
+		
+		<shared-cache-mode>ENABLE_SELECTIVE</shared-cache-mode>
+	
+
 		<properties>
 			<property name="javax.persistence.jdbc.url"
 				value="jdbc:mysql://localhost/concessionaria?serverTimezone=UTC" />
@@ -26,6 +30,8 @@
 			<property name="hibernate.show_sql" value="true" />
 			<property name="hibernate.format_sqls" value="true" />
 			<property name="hibernate.hbm2ddl.auto" value="update" />
+			<property name="hibernate.cache.region.factory_class"
+				value="org.hibernate.cache.ehcache.SingletonEhCacheRegionFactory" />
 		</properties>
 	</persistence-unit>
 </persistence>

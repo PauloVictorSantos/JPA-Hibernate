@@ -4,6 +4,7 @@
 		<class>br.jus.hibernate.model.Acessorio</class>
 		<class>br.jus.hibernate.model.Animal</class>
 		<class>br.jus.hibernate.model.Categoria</class>
+		<class>br.jus.hibernate.model.CentroCusto</class>
 		<class>br.jus.hibernate.model.Cliente</class>
 		<class>br.jus.hibernate.model.Funcionario</class>
 		<class>br.jus.hibernate.model.Pessoa</class>
