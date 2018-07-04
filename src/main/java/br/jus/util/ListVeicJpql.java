@@ -5,22 +5,24 @@ import java.util.List;
 import javax.persistence.EntityManager;
 import javax.persistence.TypedQuery;
 
-import br.jus.hibernate.model.PrecoVeiculo;
+import br.jus.hibernate.model.TotalCarroPorAno;
 
 public class ListVeicJpql {
 
 	public static void main(String[] args) {
 
 		EntityManager manager = JpaUtil.getEntityManager();
-		String jpql = "select new br.jus.hibernate.model. PrecoVeiculo(modelo, valor) from Veiculo";
+		String jpql = "select new br.jus.hibernate.model.TotalCarroPorAno(v.anoFabricacao,"
+				+ "avg(v.valor), count(v))"
+				+ " from Veiculo v group by v.anoFabricacao";
 
-		TypedQuery<PrecoVeiculo> query = manager.createQuery(jpql, PrecoVeiculo.class);
+		TypedQuery<TotalCarroPorAno> query = manager.createQuery(jpql, TotalCarroPorAno.class);
 
-		List<PrecoVeiculo> resul = query.getResultList();
+		List<TotalCarroPorAno> resul = query.getResultList();
 
-		for (PrecoVeiculo preco : resul) {
-
-			System.out.println(preco.getModelo() + " - " + preco.getValor());
+		for (TotalCarroPorAno valores : resul) {
+			System.out.println("Ano: " + valores.getAnoFabricacao() + " - Preço médio: " + valores.getMediaPreco()
+					+ " - Quantidade: " + valores.getQuantidadeCarros());
 		}
 	}
 }
