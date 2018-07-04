@@ -12,17 +12,12 @@ public class ListVeicJpql {
 	public static void main(String[] args) {
 
 		EntityManager manager = JpaUtil.getEntityManager();
-		String jpql = "select new br.jus.hibernate.model.TotalCarroPorAno(v.anoFabricacao,"
-				+ "avg(v.valor), count(v))"
-				+ " from Veiculo v group by v.anoFabricacao";
+		String jpql = "select count(v) from Veiculo v";
 
-		TypedQuery<TotalCarroPorAno> query = manager.createQuery(jpql, TotalCarroPorAno.class);
+		TypedQuery<Long> query = manager.createQuery(jpql, Long.class);
 
-		List<TotalCarroPorAno> resul = query.getResultList();
+		Long resul = query.getSingleResult();
 
-		for (TotalCarroPorAno valores : resul) {
-			System.out.println("Ano: " + valores.getAnoFabricacao() + " - Preço médio: " + valores.getMediaPreco()
-					+ " - Quantidade: " + valores.getQuantidadeCarros());
-		}
+		System.out.println("Quantidade de veículos: " + resul);
 	}
 }
