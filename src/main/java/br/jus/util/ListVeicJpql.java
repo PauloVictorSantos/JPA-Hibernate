@@ -15,9 +15,11 @@ public class ListVeicJpql {
 		String jpql = "from Veiculo";
 		
 		TypedQuery<Veiculo> query = manager.createQuery(jpql,Veiculo.class);
+		query.setFirstResult(0);
+		//query.setMaxResults(10);
 		
 		List<Veiculo> veiculos = query.getResultList();
-
+		System.out.println(veiculos.size()+" itens");
 		for (Veiculo veiculo : veiculos) {
 			System.out.println(veiculo.getModelo() + " " + veiculo.getFabricante() + ": " + veiculo.getAnoFabricacao());
 		}
