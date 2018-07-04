@@ -4,6 +4,7 @@ import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
@@ -55,7 +56,7 @@ public class Proprietario {
 		this.email = email;
 	}
 
-	@OneToMany(mappedBy = "proprietario")
+	@OneToMany(mappedBy = "proprietario",fetch=FetchType.LAZY)
 	public List<Veiculo> getVeiculos() {
 		return veiculos;
 	}

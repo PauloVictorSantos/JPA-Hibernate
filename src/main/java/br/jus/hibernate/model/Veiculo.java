@@ -12,6 +12,7 @@ import javax.persistence.EmbeddedId;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
+import javax.persistence.FetchType;
 import javax.persistence.JoinColumn;
 import javax.persistence.JoinColumns;
 import javax.persistence.JoinTable;
@@ -50,7 +51,7 @@ public class Veiculo {
 		this.acessorio = acessorio;
 	}
 
-	@ManyToOne(optional=false)
+	@ManyToOne(optional=false,fetch= FetchType.LAZY)
 	@JoinColumn(name="cod_proprietario")
 	public Proprietario getProprietario() {
 		return proprietario;
