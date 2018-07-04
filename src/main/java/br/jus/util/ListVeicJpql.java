@@ -16,7 +16,7 @@ public class ListVeicJpql {
 		
 		TypedQuery<Veiculo> query = manager.createQuery(jpql,Veiculo.class);
 		query.setFirstResult(0);
-		//query.setMaxResults(10);
+		query.setMaxResults(10);
 		
 		List<Veiculo> veiculos = query.getResultList();
 		System.out.println(veiculos.size()+" itens");
