@@ -3,12 +3,15 @@ package br.jus.hibernate.model;
 import java.util.HashSet;
 import java.util.Set;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.ManyToMany;
 import javax.persistence.Table;
+
+import org.hibernate.annotations.Cascade;
 
 @Entity
 @Table(name = "acessorio")
@@ -36,7 +39,7 @@ public class Acessorio {
 	public void setDescricao(String descricao) {
 		this.descricao = descricao;
 	}
-	@ManyToMany(mappedBy="acessorio")
+	@ManyToMany(mappedBy="acessorio", cascade= CascadeType.PERSIST)
 	public Set<Veiculo> getVeiculo() {
 		return veiculo;
 	}
