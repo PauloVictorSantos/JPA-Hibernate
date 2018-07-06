@@ -18,7 +18,7 @@ import br.jus.hibernate.model.Veiculo;
 public class VeiculoCriteria {
 	public static void main(String[] args) {
 		List<Veiculo> veiculos = pesquisarVeiculo(
-				TipoCombustivel.BICOMBUSTIVEL, new BigDecimal(400));
+				TipoCombustivel.BICOMBUSTIVEL, new BigDecimal(2012));
 		for(Veiculo v:veiculos){
 			System.out.println(v.getModelo()+" - "+v.getValor());
 		}
