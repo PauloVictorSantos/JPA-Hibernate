@@ -1,11 +1,7 @@
 package br.jus.util;
 
-import java.util.List;
-
 import javax.persistence.EntityManager;
 import javax.persistence.TypedQuery;
-
-import br.jus.hibernate.model.TotalCarroPorAno;
 
 public class ListVeicJpql {
 
