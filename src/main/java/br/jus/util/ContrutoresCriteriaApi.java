@@ -20,7 +20,7 @@ public class ContrutoresCriteriaApi {
 		CriteriaQuery<Veiculo>criteriaQuery = builder.createQuery(Veiculo.class);
 		
 		Root<Veiculo> veiculo = criteriaQuery.from(Veiculo.class);
-		Join<Veiculo, Proprietario> proprietario = veiculo.join("proprietario");
+		Join<Veiculo, Proprietario> proprietario = (Join) veiculo.fetch("proprietario");
 		
 		criteriaQuery.select(veiculo);
 		criteriaQuery.where(builder.equal(proprietario.get("nome"),"João"));
