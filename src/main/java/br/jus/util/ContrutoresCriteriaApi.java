@@ -6,6 +6,7 @@ import javax.persistence.EntityManager;
 import javax.persistence.TypedQuery;
 import javax.persistence.criteria.CriteriaBuilder;
 import javax.persistence.criteria.CriteriaQuery;
+import javax.persistence.criteria.Predicate;
 import javax.persistence.criteria.Root;
 
 import br.jus.hibernate.model.PrecoVeiculo;
@@ -16,16 +17,19 @@ public class ContrutoresCriteriaApi {
 	public static void main(String[] args) {
 		EntityManager manager= JpaUtil.getEntityManager();
 		CriteriaBuilder builder = manager.getCriteriaBuilder();
-		CriteriaQuery<PrecoVeiculo>criteriaQuery = builder.createQuery(PrecoVeiculo.class);
+		CriteriaQuery<Veiculo>criteriaQuery = builder.createQuery(Veiculo.class);
 		
 		Root<Veiculo> veiculo = criteriaQuery.from(Veiculo.class);
-		criteriaQuery.select(builder.construct(PrecoVeiculo.class, veiculo.<String>get("modelo"), veiculo.<String> get("valor")));
-
-		TypedQuery<PrecoVeiculo> query = manager.createQuery(criteriaQuery);
-		List<PrecoVeiculo> resultado = query.getResultList();
+		Predicate predicate = builder.equal(builder.upper(veiculo.<String>get("modelo")), "i30".toUpperCase());
 		
-		for(PrecoVeiculo tupla: resultado){
-			System.out.println(tupla.getModelo()+" - "+tupla.getValor());
+		criteriaQuery.select(veiculo);
+		criteriaQuery.where(predicate);
+		
+		TypedQuery<Veiculo> query = manager.createQuery(criteriaQuery);
+		List<Veiculo> resultado = query.getResultList();
+		
+		for(Veiculo veic: resultado){
+			System.out.println(veic.getModelo()+" - "+veic.getValor());
 		}
 	}
 
