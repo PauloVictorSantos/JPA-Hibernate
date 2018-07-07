@@ -6,9 +6,10 @@ import javax.persistence.EntityManager;
 import javax.persistence.TypedQuery;
 import javax.persistence.criteria.CriteriaBuilder;
 import javax.persistence.criteria.CriteriaQuery;
-import javax.persistence.criteria.Order;
+import javax.persistence.criteria.Join;
 import javax.persistence.criteria.Root;
 
+import br.jus.hibernate.model.Proprietario;
 import br.jus.hibernate.model.Veiculo;
 
 public class ContrutoresCriteriaApi {
@@ -19,16 +20,16 @@ public class ContrutoresCriteriaApi {
 		CriteriaQuery<Veiculo>criteriaQuery = builder.createQuery(Veiculo.class);
 		
 		Root<Veiculo> veiculo = criteriaQuery.from(Veiculo.class);
-		Order order = builder.desc(veiculo.<String>get("anoFabricacao"));
+		Join<Veiculo, Proprietario> proprietario = veiculo.join("proprietario");
 		
 		criteriaQuery.select(veiculo);
-		criteriaQuery.orderBy(order);
+		criteriaQuery.where(builder.equal(proprietario.get("nome"),"João"));
 		
 		TypedQuery<Veiculo> query = manager.createQuery(criteriaQuery);
 		List<Veiculo> resultado = query.getResultList();
 		
 		for(Veiculo veic: resultado){
-			System.out.println(veic.getModelo()+" - "+veic.getValor());
+			System.out.println(veic.getModelo()+" - "+veic.getValor()+" - "+veic.getProprietario().getNome());
 		}
 	}
 
